@@ -7,6 +7,11 @@ int numRand();
 void mostrarMayorYMenor(int a, int b, int c);
 int sumaEnterosMenores(int N);
 void tablaMultiplicar(int a);
+float suma (float a ,float b);
+float resta (float a ,float b);
+float multiplicacion (float a ,float b);
+float division (float a ,float b);
+float convertirNegativo (float *a);
 int menu();
 
 int main(int argc, char *argv[]) {
@@ -50,6 +55,66 @@ int main(int argc, char *argv[]) {
                     system("PAUSE");
                 }
                 break;
+            case 5:
+                {
+                    float num1, num2;
+                    char operador;
+
+                  printf("Ingrese el operador (+, -, *, / ): \n");
+                  scanf(" %c", &operador);
+
+                  printf("Ingrese primer numero: \n");
+                  scanf("%f",&num1);
+
+                  printf("Ingrese segundo numero: \n");
+                  scanf("%f",&num2);
+
+                  float resultado;
+
+                  switch (operador) {
+        case '+':
+            resultado = suma(num1, num2);
+            break;
+        case '-':
+    resultado = resta(num1, num2);
+            break;
+        case '*':
+    resultado = multiplicacion(num1, num2);
+            break;
+        case '/':
+    resultado = division(num1, num2);
+            break;
+        default:
+            printf("Operador invalido.\n");
+            break;
+    }
+
+    printf("Resultado: %.2f\n", resultado);
+    system("PAUSE");
+
+
+
+                }
+            break;
+        case 6:
+            {
+             float num;
+             printf("Ingrese un numero para convertirlo a negativo. \n");
+             scanf("%f",&num);
+             convertirNegativo(&num);
+             printf("Numero: %.2f \n", num);
+             system("PAUSE");
+            }
+            break;
+        case 7:
+            {
+                int num1, num2;
+                cargaValoresReferencia(&num1, &num2);
+                printf("Sus numeros: %d y %d.", num1,num2);
+
+             system("PAUSE");
+            }
+            break;
             case 0:
                 printf("\n\nTERMINATE THE PROGRAM\n");
                 break;
@@ -75,6 +140,9 @@ int menu() {
     printf("\n2-Diseñe una función que reciba 3 números enteros y muestre el mayor y el menor");
     printf("\n3-Diseñe una función que reciba un número entero N y realice la suma de los números enteros positivos menores que N y lo retorne. N es un  dato ingresado por el usuario en el main");
     printf("\n4-Desarrollar una función que muestre la tabla de multiplicar de un número entero recibido por parámetro.");
+    printf("\n5 Realice una pequeña calculadora, utilizando funciones una función de suma, una de multiplicación, una de resta, una de división…");
+    printf("\n6 Realizar una función que reciba un número positivo entero por parámetro por referencia, y cambie su signo a negativo.");
+    printf("\n7 Realizar una función que reciba dos números enteros por parámetro por referencia y cargue sus valores el usuario dentro de la función.");
     printf("\n0-QUIT");
     printf("\n\nENTER YOUR CHOICE: ");
     scanf("%d", &input);
@@ -127,4 +195,30 @@ int sumaEnterosMenores(int N) {
         sumaMenores += i;
     }
     return sumaMenores;
+}
+
+
+float suma (float a ,float b) {
+    return a+b;
+}
+float resta (float a ,float b) {
+    return a-b;
+}
+float multiplicacion (float a ,float b) {
+    return a*b;
+}
+float division (float a ,float b) {
+    return a/b;
+}
+
+float convertirNegativo (float *a) {
+    *a=*a *-1;
+}
+
+int cargaValoresReferencia(int *a, int *b){
+    printf("Ingrese el primer numero: ");
+    scanf("%d",a);
+    printf("Ingrese el segundo numero: ");
+    scanf("%d",b);
+
 }
