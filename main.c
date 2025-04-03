@@ -150,8 +150,7 @@ int menu() {
 }
 
 int numRand() {
-    system("cls");
-    system("color 1E");
+
     srand(time(NULL));  // Inicializa la semilla para la generación de números aleatorios
     int numeroRand = rand() % 101;  // Cambiado a 101 para incluir el 100 en el rango
     return numeroRand;
